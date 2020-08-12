@@ -3,7 +3,7 @@ import React from 'react';
 function Button(props) {
     return (
         <button
-            className='btn btn-success ml-2'
+            className={`btn ml-2 ${props.className}`}
             onClick={props.handleFormSubmit}
         >
             {props.name}

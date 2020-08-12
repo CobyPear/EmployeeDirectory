@@ -10,13 +10,14 @@ function SearchBar(props) {
                 value={props.value}
                 name='search'
                 type='search'
-                className='form-control col-8'
-                placeholder='Filter Employees'
+                className='form-control col'
+                placeholder='Filter Employees by first, last, username, and location'
                 id='search'
                 />
         <Button 
         handleFormSubmit={props.handleFormSubmit}
         name={props.name}
+        className='btn-success'
          />
         </form>
     )

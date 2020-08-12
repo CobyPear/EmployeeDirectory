@@ -16,9 +16,6 @@ class EmployeeCards extends React.Component {
     };
 
     renderEmployees = () => {
-        // console.log(this.state.result)
-        // console.log(this.state.filteredResults)
-
         return this.state.filteredResults.map(results => <EmployeeCard key={results.cell} result={results} />)
     };
 
@@ -34,16 +31,28 @@ class EmployeeCards extends React.Component {
 
     handleInputChange = event => {
         const { name, value } = event.target
-        this.setState({
-            [name]: value
-        })
+        this.setState(()=> {
+            if (!value) {
+                return {
+                    [name]: value,
+                    filteredResults: this.state.results
+                };
+            } else {
+                return { [name]: value }
+            };
+        });
     };
 
     handleFormSubmit = event => {
         event.preventDefault();
 
         this.setState(() => {
-            const updatedResults = this.state.filteredResults.filter(x => x.name.first.includes(this.state.search))
+            const updatedResults = this.state.filteredResults.filter(x => 
+                x.name.first.includes(this.state.search) || 
+                x.name.last.includes(this.state.search) ||
+                x.login.username.includes(this.state.search)|| 
+                x.location.state.includes(this.state.search) ||
+                x.location.username.includes(this.state.search))
             if (!this.state.search) {
                 return { filteredResults: this.state.results }
             } else {
@@ -59,8 +68,8 @@ class EmployeeCards extends React.Component {
 
         // found at https://www.sitepoint.com/sort-an-array-of-objects-in-javascript/
         function compare(a, b) {
-            const nameA = a.name.first.toUpperCase();
-            const nameB = b.name.first.toUpperCase();
+            const nameA = a.name.last.toUpperCase();
+            const nameB = b.name.last.toUpperCase();
 
             let comparison = 0;
             if (nameA > nameB) {
@@ -74,7 +83,6 @@ class EmployeeCards extends React.Component {
         return this.setState({ filteredResults: this.state.filteredResults.sort(compare) })
     };
 
-
     render() {
         return (
             <div className='container'>
@@ -86,11 +94,12 @@ class EmployeeCards extends React.Component {
                 />
                 <Button
                     handleFormSubmit={this.renderSortedEmployees}
-                    name='Sort By First Name'
+                    name='Sort By Last Name'
+                    className='mb-3 btn-success'
                 />
                 {this.renderEmployees()}
             </div>
-        )
+        );
     };
 }
 
