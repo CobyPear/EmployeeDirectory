@@ -1,11 +1,14 @@
 import React from 'react';
+import { BrowserRouter as Router, Route } from "react-router-dom";
 import EmployeeCards from './components/EmployeeCards';
 
-function App () {
+function App() {
     return (
-    <main className='mainDiv'>
-        <EmployeeCards />
-    </main>
+        <Router>
+            <main className='mainDiv'>
+                <Route path="/" component={EmployeeCards} />
+            </main>
+        </Router>
     );
 };
 
