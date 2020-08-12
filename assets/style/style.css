@@ -1,0 +1,29 @@
+
+body {
+    background-image: url('https://background-tiles.com/overview/orange/textures/large/5020.png');
+    background-repeat: repeat;
+}
+.form {
+    display: flex;
+    flex-flow: row wrap;
+}
+.form > label {
+    width: 100%;
+}
+.btn {
+    display: flex;
+}
+.container {
+    width: 85%;
+}
+.row {
+    margin-bottom: 12.5px;
+}
+.card {
+    text-align: left;
+    background-image: url('https://background-tiles.com/overview/white/textures/large/5023.png');
+    background-repeat: repeat;
+}
+ul {
+    list-style: none;
+}
