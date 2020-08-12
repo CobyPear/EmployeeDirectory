@@ -50,9 +50,9 @@ class EmployeeCards extends React.Component {
             const updatedResults = this.state.filteredResults.filter(x => 
                 x.name.first.includes(this.state.search) || 
                 x.name.last.includes(this.state.search) ||
-                x.login.username.includes(this.state.search)|| 
+                x.login.username.includes(this.state.search) || 
                 x.location.state.includes(this.state.search) ||
-                x.location.username.includes(this.state.search))
+                x.location.city.includes(this.state.search))
             if (!this.state.search) {
                 return { filteredResults: this.state.results }
             } else {
